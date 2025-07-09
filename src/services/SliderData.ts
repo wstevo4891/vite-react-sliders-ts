@@ -2,8 +2,6 @@
  * Constant value of the width of each slide item plus gap in pixels.
  */
 const ITEM_WIDTH = 172;
-// const LEFT = "left";
-// const RIGHT = "right";
 
 type numberOrNull = number | null;
 
@@ -69,49 +67,6 @@ export default class SliderData {
   printData(): void {
     console.log("SLIDER DATA MATRIX:", JSON.stringify(this.matrix, null, 2));
   }
-
-  /**
-   * @function calcScrollLength
-   * 
-   * @description Calculates the scroll length based on the direction and slide index.
-   * 
-   * @param direction - The direction to scroll, either "left" or "right".
-   * @param slideIndex - The current index of the slide.
-   * 
-   * @returns The calculated scroll length in pixels.
-   */
-  // calcscrollLength(direction: "left" | "right", slideIndex: number): number {
-  //   let scrollLength = 0;
-
-  //   if (direction === LEFT && slideIndex > 0) {
-  //     scrollLength = ITEM_WIDTH;
-
-  //   } else if (direction === RIGHT) {
-  //     if (slideIndex === 1) {
-  //       scrollLength = this.slideWidth;
-
-  //     } else if (slideIndex === 2) {
-  //       scrollLength = this.slideWidth * 2;
-
-  //     } else if (slideIndex > 2) {
-  //       scrollLength = (this.slideWidth * 2) + ITEM_WIDTH;
-  //     }
-  //   }
-
-  //   return scrollLength;
-  // }
-
-  // calcSlidesOffset(direction: "left" | "right", slideIndex: number): number {
-  //   if (direction === RIGHT && slideIndex >= 2) {
-  //     return this.slideWidth + ITEM_WIDTH;
-
-  //   } else if (direction === LEFT && slideIndex > 0) {
-  //     return this.slideWidth;
-
-  //   } else {
-  //     return 0;
-  //   }
-  // }
 
   /**
    * Builds a matrix of items for the slider.
@@ -181,8 +136,8 @@ export default class SliderData {
       end = (this.slideLength * 3) + 1;
 
     } else if (currentIndex < this.lastSlideIndex - 1) {
-      start = ((currentIndex - 1) * this.slideLength) - 1; // ((2 - 1) * 3) - 1 = 2
-      end = start + (this.slideLength * 3) + 2; // 2 + (3 * 3) + 2 = 13
+      start = ((currentIndex - 1) * this.slideLength) - 1;
+      end = start + (this.slideLength * 3) + 2;
 
     } else {
       start = ((currentIndex - 1) * this.slideLength) - 1;
