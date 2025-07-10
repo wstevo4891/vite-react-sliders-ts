@@ -13,6 +13,7 @@ export default defineConfig({
       '@contexts': path.resolve(__dirname, './src/contexts/index'),
       '@screens': path.resolve(__dirname, './src/screens/index'),
       '@services': path.resolve(__dirname, './src/services/index'),
+      '@types': path.resolve(__dirname, './src/types.ts'),
     },
   },
 })

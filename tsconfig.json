@@ -12,6 +12,7 @@
       "@contexts/*": ["./src/contexts/index"],
       "@screens/*": ["./src/screens/index"],
       "@services/*": ["./src/services/index"],
+      "@types/*": ["./src/types.ts"],
     }
   }
 }
