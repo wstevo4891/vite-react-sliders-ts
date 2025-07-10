@@ -1,9 +1,4 @@
-/**
- * Constant value of the width of each slide item plus gap in pixels.
- */
-const ITEM_WIDTH = 172;
-
-type numberOrNull = number | null;
+import { numberOrNull } from "@types";
 
 interface IScrollMap {
   left: numberOrNull;
@@ -21,6 +16,11 @@ const BLANK_ITEM: ISlidesMatrixItem = {
   offset: 0,
   scrollMap: { left: null, right: null },
 };
+
+/**
+ * Constant value of the width of each slide item plus gap in pixels.
+ */
+const ITEM_WIDTH = 172;
 
 /**
  * SliderData.ts
@@ -126,8 +126,8 @@ export default class SliderData {
   }
 
   private buildSlidesList(currentIndex: number): number[] {
-    let start = 0;
-    let end = 0;
+    let start: number = 0;
+    let end: number = 0;
 
     if (currentIndex === 0) {
       end = (this.slideLength * 2) + 1;

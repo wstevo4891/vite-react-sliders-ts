@@ -2,14 +2,17 @@ import { useState } from "react";
 
 import { SliderData } from "@services";
 
-type numberOrNull = number | null;
-
-type directionType = "left" | "right" | null;
+import {
+  type numberOrNull,
+  type directionType,
+} from "@types";
 
 interface IScrollMap {
   left: numberOrNull;
   right: numberOrNull;
 }
+
+type directionKey = keyof IScrollMap;
 
 interface ISlidesMatrixItem {
   list: number[];
@@ -49,6 +52,23 @@ export default function useController(sliderData: SliderData): IController {
     offset: null,
   });
 
+  const setDirection = (direction: directionKey | null): void => {
+    if (direction === null) return;
+
+    const slideIndex: number = calcSlideIndex(direction);
+
+    const scrollLength: number = state.data.scrollMap[direction];
+
+    setState((prevState) => ({
+      ...prevState,
+      direction,
+      slideIndex,
+      scrollLength,
+      isScrolling: true,
+      offset: null,
+    }));
+  };
+
   const calcSlideIndex = (direction: directionType): number => {
     let result = state.slideIndex;
 
@@ -59,23 +79,6 @@ export default function useController(sliderData: SliderData): IController {
     }
 
     return result;
-  };
-
-  const setDirection = (direction: directionType) => {
-    if (direction === null) return;
-
-    const slideIndex = calcSlideIndex(direction);
-    
-    const scrollLength = state.data.scrollMap[direction];
-
-    setState((prevState) => ({
-      ...prevState,
-      direction,
-      slideIndex,
-      scrollLength,
-      isScrolling: true,
-      offset: null,
-    }));
   };
 
   const loadNewSlides = (): void => {

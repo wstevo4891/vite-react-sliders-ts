@@ -17,7 +17,7 @@ const SLIDE_LENGTH_MAP = {
 };
 
 const SlideLengthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [slideLength, setSlideLength] = useState(3);
+  const [slideLength, setSlideLength] = useState<number>(3);
 
   useEffect(() => {
     const handleResize = (): void => {
